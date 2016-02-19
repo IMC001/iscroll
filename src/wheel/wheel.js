@@ -16,9 +16,6 @@
 			return;
 		}
 
-		e.preventDefault();
-		e.stopPropagation();
-
 		var wheelDeltaX, wheelDeltaY,
 			newX, newY,
 			that = this;
@@ -60,6 +57,24 @@
 			wheelDeltaX = wheelDeltaY;
 			wheelDeltaY = 0;
 		}
+
+        if (this.options.bubblingWheelEvents) {
+            if (wheelDeltaY < 0) {
+                if (this.y != this.maxScrollY) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }
+            else if (wheelDeltaY > 0) {
+                if (this.y != 0) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }
+        } else {
+            e.preventDefault();
+            e.stopPropagation();
+        }
 
 		if ( this.options.snap ) {
 			newX = this.currentPage.pageX;
