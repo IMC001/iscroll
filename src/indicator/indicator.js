@@ -3,7 +3,7 @@ function createDefaultScrollbar (direction, interactive, type, zIndex) {
 	var scrollbar = document.createElement('div'),
 		indicator = document.createElement('div');
 
-    zIndex = !isNaN(zIndex) ? 9999 : zIndex;
+    zIndex = isNaN(zIndex) ? 9999 : zIndex;
 
 	if ( type === true ) {
 		scrollbar.style.cssText = 'position:absolute;z-index:'+zIndex;
