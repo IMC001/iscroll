@@ -1,4 +1,4 @@
-/*! iScroll v5.1.3 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
+/*! iScroll v5.1.3 ~ (c) 2008-2016 Matteo Spinelli ~ http://cubiq.org/license */
 (function (window, document, Math) {
 var rAF = window.requestAnimationFrame	||
 	window.webkitRequestAnimationFrame	||
@@ -614,6 +614,24 @@ IScroll.prototype = {
 	enable: function () {
 		this.enabled = true;
 	},
+
+    show: function() {
+        if (this.indicators) {
+            this.indicators.forEach(function(indicator) {
+                indicator.wrapperStyle['visibility'] = 'visible';
+            });
+            this.refresh();
+        }
+    },
+
+    hide: function() {
+        if (this.indicators) {
+            this.indicators.forEach(function(indicator) {
+                indicator.wrapperStyle['visibility'] = 'hidden';
+            });
+            this.refresh();
+        }
+    },
 
 	refresh: function () {
 		var rf = this.wrapper.offsetHeight;		// Force reflow
