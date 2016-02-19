@@ -13,7 +13,7 @@
 			// Vertical scrollbar
 			if ( this.options.scrollY ) {
 				indicator = {
-					el: createDefaultScrollbar('v', interactive, this.options.scrollbars),
+					el: createDefaultScrollbar('v', interactive, this.options.scrollbars, this.options.zIndex),
 					interactive: interactive,
 					defaultScrollbars: true,
 					customStyle: customStyle,
@@ -30,7 +30,7 @@
 			// Horizontal scrollbar
 			if ( this.options.scrollX ) {
 				indicator = {
-					el: createDefaultScrollbar('h', interactive, this.options.scrollbars),
+					el: createDefaultScrollbar('h', interactive, this.options.scrollbars, this.options.zIndex),
 					interactive: interactive,
 					defaultScrollbars: true,
 					customStyle: customStyle,

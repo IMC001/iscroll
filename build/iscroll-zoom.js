@@ -949,7 +949,7 @@ IScroll.prototype = {
 			// Vertical scrollbar
 			if ( this.options.scrollY ) {
 				indicator = {
-					el: createDefaultScrollbar('v', interactive, this.options.scrollbars),
+					el: createDefaultScrollbar('v', interactive, this.options.scrollbars, this.options.zIndex),
 					interactive: interactive,
 					defaultScrollbars: true,
 					customStyle: customStyle,
@@ -966,7 +966,7 @@ IScroll.prototype = {
 			// Horizontal scrollbar
 			if ( this.options.scrollX ) {
 				indicator = {
-					el: createDefaultScrollbar('h', interactive, this.options.scrollbars),
+					el: createDefaultScrollbar('h', interactive, this.options.scrollbars, this.options.zIndex),
 					interactive: interactive,
 					defaultScrollbars: true,
 					customStyle: customStyle,
@@ -1796,12 +1796,14 @@ IScroll.prototype = {
 	}
 
 };
-function createDefaultScrollbar (direction, interactive, type) {
+function createDefaultScrollbar (direction, interactive, type, zIndex) {
 	var scrollbar = document.createElement('div'),
 		indicator = document.createElement('div');
 
+    zIndex = !isNaN(zIndex) ? 9999 : zIndex;
+
 	if ( type === true ) {
-		scrollbar.style.cssText = 'position:absolute;z-index:9999';
+		scrollbar.style.cssText = 'position:absolute;z-index:'+zIndex;
 		indicator.style.cssText = '-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);border-radius:3px';
 	}
 
