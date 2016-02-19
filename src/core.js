@@ -369,6 +369,24 @@ IScroll.prototype = {
 		this.enabled = true;
 	},
 
+    show: function() {
+        if (this.indicators) {
+            this.indicators.forEach(function(indicator) {
+                indicator.wrapperStyle['visibility'] = 'visible';
+            });
+            this.refresh();
+        }
+    },
+
+    hide: function() {
+        if (this.indicators) {
+            this.indicators.forEach(function(indicator) {
+                indicator.wrapperStyle['visibility'] = 'hidden';
+            });
+            this.refresh();
+        }
+    },
+
 	refresh: function () {
 		var rf = this.wrapper.offsetHeight;		// Force reflow
 
